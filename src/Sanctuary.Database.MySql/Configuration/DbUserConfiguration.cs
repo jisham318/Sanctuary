@@ -23,7 +23,7 @@ public sealed class DbUserConfiguration : IEntityTypeConfiguration<DbUser>
         builder.Property(u => u.IsMember).IsRequired();
         builder.Property(u => u.IsAdmin).IsRequired();
 
-        builder.Property(u => u.Created).IsRequired().HasDefaultValueSql("CURDATE()");
+        builder.Property(u => u.Created).IsRequired().HasDefaultValueSql("CURRENT_DATE");
         builder.Property(u => u.LastLogin).IsRequired(false);
 
         builder.HasMany(u => u.Characters)
