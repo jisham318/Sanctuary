@@ -60,7 +60,10 @@ public class GatewayConnection : UdpConnection
 
         _logger.LogInformation("{connection} disconnected. {reason}", this, reason);
 
-        _loginClient.SendCharacterLogout(Player.Guid);
+        if (Player != null)
+        {
+            _loginClient.SendCharacterLogout(Player.Guid);
+        }
 
         // TODO: Save player info to database.
 
