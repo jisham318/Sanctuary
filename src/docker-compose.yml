@@ -16,13 +16,15 @@ services:
       - ./Resources:/app/Resources
       - ./.local_data:/data
     environment: &common-env
-      - Database__Provider=1 # SQLite
-      - Database__VersionString=3.0.0-sqlite
-      - Database__ConnectionString=Data Source=/data/sanctuary.db;
+      - Database__Provider=0 # MySQL
+      - Database__VersionString=8.0.40
+      - Database__ConnectionString=server=sanctuary.db;uid=chatty;pwd=freerealms;database=sanctuary;
       - Server__LoginGatewayAddress=sanctuary.login:20041
     depends_on:
       sanctuary.login:
         condition: service_started
+      sanctuary.db:
+        condition: service_healthy
 
   sanctuary.login:
     image: ${DOCKER_REGISTRY-}sanctuarylogin
@@ -35,6 +37,27 @@ services:
       - "20042:20042/udp"
     volumes: *common-volumes
     environment: *common-env
+    depends_on:
+      sanctuary.db:
+        condition: service_healthy
+
+  sanctuary.db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: sanctuary
+      MYSQL_USER: chatty
+      MYSQL_PASSWORD: freerealms
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 
 volumes:
   logs:
+  mysql_data:

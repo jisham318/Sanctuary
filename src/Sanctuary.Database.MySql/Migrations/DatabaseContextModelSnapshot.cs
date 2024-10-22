@@ -75,8 +75,8 @@ namespace Sanctuary.Database.MySql.Migrations
 
                     b.Property<DateTimeOffset>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURDATE()");
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<int>("EyeColor")
                         .HasColumnType("int");
@@ -103,7 +103,7 @@ namespace Sanctuary.Database.MySql.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<DateTimeOffset?>("LastLogin")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp");
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
@@ -182,8 +182,8 @@ namespace Sanctuary.Database.MySql.Migrations
 
                     b.Property<DateTimeOffset>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURDATE()");
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<int>("Definition")
                         .HasColumnType("int");
@@ -208,8 +208,8 @@ namespace Sanctuary.Database.MySql.Migrations
 
                     b.Property<DateTimeOffset>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURDATE()");
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<bool>("IsUpgraded")
                         .HasColumnType("tinyint(1)");
@@ -267,8 +267,8 @@ namespace Sanctuary.Database.MySql.Migrations
 
                     b.Property<DateTimeOffset>("Created")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime(6)")
-                        .HasDefaultValueSql("CURDATE()");
+                        .HasColumnType("timestamp")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<bool>("IsAdmin")
                         .HasColumnType("tinyint(1)");
@@ -280,7 +280,7 @@ namespace Sanctuary.Database.MySql.Migrations
                         .HasColumnType("tinyint(1)");
 
                     b.Property<DateTimeOffset?>("LastLogin")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("timestamp");
 
                     b.Property<int>("MaxCharacters")
                         .ValueGeneratedOnAdd()

@@ -31,8 +31,8 @@ namespace Sanctuary.Database.MySql.Migrations
                     IsLocked = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     IsMember = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     IsAdmin = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false, defaultValueSql: "CURDATE()"),
-                    LastLogin = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true)
+                    Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    LastLogin = table.Column<DateTimeOffset>(type: "timestamp", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -72,8 +72,8 @@ namespace Sanctuary.Database.MySql.Migrations
                     ChatBubbleForegroundColor = table.Column<int>(type: "int", nullable: false, defaultValue: 408679),
                     ChatBubbleBackgroundColor = table.Column<int>(type: "int", nullable: false, defaultValue: 13951728),
                     ChatBubbleSize = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
-                    Created = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false, defaultValueSql: "CURDATE()"),
-                    LastLogin = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
+                    Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP"),
+                    LastLogin = table.Column<DateTimeOffset>(type: "timestamp", nullable: true),
                     UserGuid = table.Column<ulong>(type: "bigint unsigned", nullable: false),
                     Position_W = table.Column<float>(type: "float", nullable: false),
                     Position_X = table.Column<float>(type: "float", nullable: false),
@@ -105,7 +105,7 @@ namespace Sanctuary.Database.MySql.Migrations
                     Tint = table.Column<int>(type: "int", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
                     Definition = table.Column<int>(type: "int", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false, defaultValueSql: "CURDATE()")
+                    Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
                 },
                 constraints: table =>
                 {
@@ -126,7 +126,7 @@ namespace Sanctuary.Database.MySql.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     CharacterGuid = table.Column<ulong>(type: "bigint unsigned", nullable: false),
                     IsUpgraded = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Created = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: false, defaultValueSql: "CURDATE()")
+                    Created = table.Column<DateTimeOffset>(type: "timestamp", nullable: false, defaultValueSql: "CURRENT_TIMESTAMP")
                 },
                 constraints: table =>
                 {
